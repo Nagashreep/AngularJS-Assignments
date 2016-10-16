@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app='LunchCheck'>
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJs-Module1 solution</title>
+  </head>
+  <body>
+    <h1>AngularJs-Module1 solution</h1>
+    <div ng-controller='LunchCheckController'>
+        <input type="text" ng-model="foodItems" placeholder="Please enter the items here">
+        <!--empty item, i.e., , , is not condidered as an item towards to the count-->
+        <input type="button" ng-click="countAndDisplayMsg()" value="Check If Too Much"></input>  <br/>
+        <p>
+            {{message}}
+        </p>
+    </div>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
