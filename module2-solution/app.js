@@ -1,39 +1,54 @@
 (function () {
   'use strict';
 
-  angular.module('LunchCheck',[])
-  .controller('LunchCheckController', LunchCheckController);
+  angular.module('ShoppingListCheckOff',[])
+  .controller('ToBuyController', ToBuyController)
+  .controller('AlreadyBoughtController',AlreadyBoughtController)
+  .service('ShoppingListCheckOffService',ShoppingListCheckOffService);
 
-  LunchCheckController.$inject=['$scope'];
+  ToBuyController.$inject=['ShoppingListCheckOffService'];
+  function ToBuyController(ShoppingListCheckOffService){
+    var buyCtrl = this;
+    buyCtrl.itemsToBuy = ShoppingListCheckOffService.getItemsToBuy();
 
-  function LunchCheckController($scope){
-    $scope.foodItems='';
-    $scope.customStyle={};
-    $scope.countAndDisplayMsg = function(){
-      var count = getNumberOfItems($scope.foodItems);
-      displayMsg(count);
-    };
-
-    function getNumberOfItems(foodItems){
-      var foodItemsArray = foodItems.split(',');
-      var count = 0;
-      for (var i = 0; i < foodItemsArray.length; i++) {
-        if(foodItemsArray[i].trim()!=''){
-          count++;
-        }
-      }
-      return count;
-    }
-
-    function displayMsg(count){
-      if(count==0){
-        $scope.message="Please enter data first!";
-      }else if(count<=3){
-         $scope.message="Enjoy!";
-      }else if(count>3){
-         $scope.message="Too much!";
-      }
-      return;
-    }
+    buyCtrl.markItemAsBought = function(itemIndex) {
+                                  ShoppingListCheckOffService.markItemAsBought(itemIndex);}
   }
+
+  AlreadyBoughtController.$inject=['ShoppingListCheckOffService'];
+  function AlreadyBoughtController(ShoppingListCheckOffService){
+    var boughtCtrl = this;
+
+    boughtCtrl.itemsBought = ShoppingListCheckOffService.getItemsBought();
+  }
+
+  function ShoppingListCheckOffService(){
+    var checkOffService = this;
+
+    var itemsToBuyList = [
+      {"name":"apples","quantity":"3"},
+      {"name":"oranges","quantity":"5"},
+      {"name":"muffins","quantity":"2"},
+      {"name":"mango juice","quantity":"2 bottles"},
+      {"name":"carrot","quantity":"7"},
+      {"name":"cookies","quantity":"10"}
+    ]
+
+    var itemsBoughtList = [];
+
+    checkOffService.getItemsToBuy = function(){
+      return itemsToBuyList;
+    }
+
+    checkOffService.getItemsBought = function(){
+      return itemsBoughtList;
+    }
+
+    checkOffService.markItemAsBought = function(itemIndex){
+      itemsBoughtList.push(itemsToBuyList[itemIndex]);
+      itemsToBuyList.splice(itemIndex,1);
+    }
+
+  }
+
 })();

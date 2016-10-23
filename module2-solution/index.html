@@ -1,18 +1,34 @@
 <!DOCTYPE html>
-<html ng-app='LunchCheck'>
+<html ng-app='ShoppingListCheckOff'>
   <head>
     <meta charset="utf-8">
-    <title>AngularJs-Module1 solution</title>
+    <title>AngularJs-Module2 solution</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <h1>AngularJs-Module1 solution</h1>
-    <div ng-controller='LunchCheckController'>
-        <input type="text" ng-model="foodItems" placeholder="Please enter the items here">
-        <!--empty item, i.e., , , is not condidered as an item towards to the count-->
-        <input type="button" ng-click="countAndDisplayMsg()" value="Check If Too Much"></input>  <br/>
-        <p>
-            {{message}}
+    <h1>AngularJs-Module2 solution</h1>
+    <div ng-controller='ToBuyController as buyCtrl'>
+        <h3>To buy:</h3>
+        <p ng-if="!buyCtrl.itemsToBuy.length" class="errorMessage">
+            Everything is bought! <br/>
         </p>
+        <table class="itemList">
+          <tr ng-repeat="item in buyCtrl.itemsToBuy">
+            <td class="itemDetails">Buy {{item.quantity}} {{item.name}}</td>
+            <td class="boughtButton"><input type="button" ng-click="buyCtrl.markItemAsBought($index)" value="Bought"/></td>
+          </tr>
+        </table>
+    </div>
+    <div ng-controller='AlreadyBoughtController as boughtCtrl'>
+        <h3>Already Bought:</h3>
+        <p ng-if="!boughtCtrl.itemsBought.length" class="errorMessage">
+            Nothing bought yet
+        </p>
+        <table class="itemList">
+          <tr ng-repeat="item in boughtCtrl.itemsBought">
+            <td class="itemDetails">Bought {{item.quantity}} {{item.name}}</td>
+          </tr>
+        </table>
     </div>
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
