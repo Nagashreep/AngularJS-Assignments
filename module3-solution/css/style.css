@@ -1,0 +1,48 @@
+.errorMessage{
+  color: red;
+  font-weight: bold;
+  font-size: 25px;
+  position: relative;
+}
+
+.descriptionColumn{
+  width: 80%;
+}
+
+.removeButton{
+  width: 20%;
+}
+
+.button{
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+input[type=text]{
+  height: 30px;
+  border-radius:5px;
+  width: 200px;
+}
+
+.filterButton{
+    border-radius:10px;
+    color: white;
+    background-color: green;
+    height: 40px;
+    width: 200px;
+}
+
+table{
+  width: 100%;
+  border-spacing: 15px;
+  font-family: sans-serif;
+}
+
+tr:nth-child(even){
+  background-color: #DCDCDC;
+  padding: 20px;
+}
+
+.title{
+  font-family: sans-serif;
+}

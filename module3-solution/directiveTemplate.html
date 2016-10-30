@@ -1,0 +1,8 @@
+<h2  ng-if="list.filteredMenuList.length>0" class="title">{{title}}</h2>
+<table>
+  <tr ng-repeat="menu in list.filteredMenuList" class="row">
+    <td class="descriptionColumn">{{menu.description}}</td>
+    <td class="removeButton"><input type="button" ng-click="list.removeItem($index)" value="Don't want this one!" class="button"/>
+  </tr>
+</table>
+<div class="errorMessage" ng-if="list.filteredMenuList.length==0"><br/>Nothing found</div>
