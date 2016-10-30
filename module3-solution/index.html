@@ -8,10 +8,10 @@
   <body>
     <h1>Narrow Down Your Chinese Menu Choice</h1>
     <div ng-controller='NarrowItDownController as narrowDownCtrl'>
-        <input type='text' ng-model='searchTerm' placeholder="Search term">
-        <input type="button" ng-click="narrowDownCtrl.getMatchedMenuItems(searchTerm)" value="Narrow It Down For Me!" class="filterButton">
+        <input type='text' ng-model='narrowDownCtrl.searchTerm' placeholder="Search term">
+        <input type="button" ng-click="narrowDownCtrl.getMatchedMenuItems()" value="Narrow It Down For Me!" class="filterButton">
 
-        <found-items menu-list="narrowDownCtrl" title="{{narrowDownCtrl.title}}">
+        <found-items filtered-menu-list="narrowDownCtrl.filteredMenuList" title="{{narrowDownCtrl.title}}" remove-item="narrowDownCtrl.removeItem(index)">
 
         </found-items>
     </div>

@@ -12,8 +12,8 @@
   function NarrowItDownController(MenuSearchService){
     var narrowDownCtrl = this;
     narrowDownCtrl.title = "Search Result"
-    narrowDownCtrl.getMatchedMenuItems = function(searchTerm){
-      var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
+    narrowDownCtrl.getMatchedMenuItems = function(){
+      var promise = MenuSearchService.getMatchedMenuItems(narrowDownCtrl.searchTerm);
 
       promise.then(function(response){
         narrowDownCtrl.filteredMenuList = response.data.menu_items;
@@ -26,8 +26,8 @@
     };
   }
 
-  MenuSearchService.$inject = ['$http','UrlBasePath','menuSearchFilter','$q']
-  function MenuSearchService($http, UrlBasePath,menuSearchFilter,$q){
+  MenuSearchService.$inject = ['$http','UrlBasePath','menuSearchFilter']
+  function MenuSearchService($http, UrlBasePath,menuSearchFilter){
     var menuService = this;
     menuService.getMatchedMenuItems = function(searchTerm){
       return $http ({
@@ -64,8 +64,9 @@
     var ddo = {
       templateUrl:'directiveTemplate.html',
       scope: {
-        list: '<menuList',
-        title: '@title'
+        filteredMenuList: '<',
+        title: '@title',
+        removeItem: '&'
       }
     };
     return ddo;
