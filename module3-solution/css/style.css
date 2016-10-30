@@ -5,8 +5,16 @@
   position: relative;
 }
 
+.nameColumn{
+  width: 20%;
+}
+
+.shortNameColumn{
+  width: 10%;
+}
+
 .descriptionColumn{
-  width: 80%;
+  width: 50%;
 }
 
 .removeButton{
