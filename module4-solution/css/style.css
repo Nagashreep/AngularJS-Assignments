@@ -1,0 +1,64 @@
+.welcome{
+  position: absolute;
+  top:20%;
+  left:30%;
+}
+
+.welcome p{
+  font-size: 32px;
+  color: blue;
+}
+
+.welcome a{
+  font-size: 20px;
+  color: red;
+  padding-left: 90px;
+}
+
+.menuHeading{
+  position: relative;
+  left:40%;
+  font-size: 30px;
+  color: blue;
+}
+
+.menuList{
+  font-size: 15px;
+  color: red;
+  font-weight: bold;
+  font-family: sans-serif;
+  position: relative;
+  left: 10px;
+  margin: 20px;
+}
+
+.triangle{
+  width:1%;
+  height:2%;
+}
+
+.subMenuHeading{
+  font-size: 25px;
+  position: relative;
+  left: 40%;
+  top:25%;
+}
+
+.selectedList{
+  position: relative;
+  top:35%;
+  left:40px;
+  color: blue;
+  font-family: cursive;;
+}
+
+.subName{
+  font-size: 15px;
+  color: red;
+  font-weight: bold;
+}
+
+.subDesc{
+  font-size: 12px;
+  color: blue;
+}

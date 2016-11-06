@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJs-Module4 solution</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <div  ng-app='MenuApp' class>
+      <ui-view></ui-view>
+    </div>
+    <div ng-app="Data" class="selectedList">
+      <ui-view></ui-view>
+    </div>
+
+    <!-- Libraries -->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+
+    <!-- Modules -->
+    <script src="src/menu/menuapp.module.js"></script>
+    <script src="src/menu/data.module.js"></script>
+
+    <!--Router -->
+    <script src="src/router.js"></script>
+
+    <!-- component -->
+    <script src="src/menu/menudetail.component.js"></script>
+    <script src="src/menu/menulist.component.js"></script>
+
+    <!-- controller -->
+    <script src="src/menu/menulist.controller.js"></script>
+    <script src="src/menu/menudetail.controller.js"></script>
+
+    <!-- service -->
+    <script src="src/menu/menudata.service.js"></script>
+
+  </body>
+</html>
