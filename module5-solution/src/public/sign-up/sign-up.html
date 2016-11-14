@@ -1,0 +1,62 @@
+<p class="signupTitle">Please complete the below form to sign up for our monthly newsletter </p>
+
+<div ng-controller="SignupController as signupCtrl">
+  <form name='signupForm' novalidate>
+    <table>
+      <tr>
+        <td class="rowTitle">First Name<span class="requiredIndication">*</span></td>
+        <td>
+          <input type="text" ng-model="signupCtrl.user.firstName" placeholder="enter first name"  name="firstName" required/>
+        </td>
+        <td ng-if="signupForm.firstName.$error.required && signupForm.firstName.$touched" class="error">
+            Please enter first name
+        </td>
+      </tr>
+      <tr>
+        <td>Last Name<span class="requiredIndication">*</span></td>
+        <td>
+           <input type="text" ng-model="signupCtrl.user.lastName" placeholder="enter last name" name="lastName" required/>
+        </td>
+        <td ng-if="signupForm.lastName.$error.required && signupForm.lastName.$touched" class="error">
+            Please enter last name
+        </td>
+      </tr>
+      <tr>
+        <td>Email Address<span class="requiredIndication">*</span></td>
+        <td>
+          <input type="email" ng-model="signupCtrl.user.emailAddress" placeholder="enter email address" name="emailAddress" required/>
+        </td>
+        <td ng-if="(signupForm.emailAddress.$error.required || signupForm.emailAddress.$invalid) && signupForm.emailAddress.$touched" class="error">
+            Please enter valid email address
+        </td>
+      </tr>
+      <tr>
+        <td>Phone Number</td>
+        <td>
+          <input type="text" ng-model="signupCtrl.user.phoneNumber" placeholder="enter phone number" name="phoneNumber"
+          pattern="(\d{3})(-?)(\d{3})(-?)(\d{4})"/>
+        </td>
+        <td ng-if="signupForm.phoneNumber.$invalid && signupForm.phoneNumber.$touched" class="error">
+            Please enter valid phone number
+        </td>
+      </tr>
+      <tr>
+        <td>Menu number of your favourite dish</td>
+        <td>
+          <input type="text" ng-model="signupCtrl.user.favMenuNumber" placeholder="enter menu number" name="favMenuNumber"/>
+        </td>
+        <td class="error">
+          {{signupCtrl.favMenuError}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button ng-click="signupCtrl.validate()" class="submitButton" ng-disabled="signupForm.$invalid"
+          ng-class="{'disabled-class': signupForm.$invalid}">Submit </button> <br/>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+    <p class="successMsg">{{signupCtrl.successMsg}}</p>
+</div>

@@ -1,0 +1,16 @@
+<div class="userInfo">
+  <div ng-show="myInfoCtrl.showSignupMsg">
+    Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a>
+  </div>
+  <div ng-show="myInfoCtrl.user">
+    <p ng-if="myInfoCtrl.user.firstName">First Name: {{myInfoCtrl.user.firstName}}</p>
+    <p ng-if="myInfoCtrl.user.lastName">Last Name: {{myInfoCtrl.user.lastName}}</p>
+    <p ng-if="myInfoCtrl.user.emailAddress">Email Address: {{myInfoCtrl.user.emailAddress}}</p>
+    <p ng-if="myInfoCtrl.user.phoneNumber">Phone Number: {{myInfoCtrl.user.phoneNumber}}</p>
+    <p ng-if="myInfoCtrl.user.favMenuNumber">Favourite Menu:<br/>
+      <img ng-src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.user.favMenuNumber | uppercase}}.jpg" alt="{{myInfoCtrl.user.favMenu.name}}" />
+    </p>
+    <p ng-if="myInfoCtrl.user.favMenu.name">Menu Name: {{myInfoCtrl.user.favMenu.name}}  </p>
+    <p ng-if="myInfoCtrl.user.favMenu.description">Menu Description: {{myInfoCtrl.user.favMenu.description}}</p>
+  </div>
+</div>
